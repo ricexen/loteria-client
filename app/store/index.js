@@ -12,7 +12,7 @@ const persistConfig = {
     transforms: [immutableTransform()],
     storage: AsyncStorage,
     key: 'root',
-    whitelist: ['loteria'],
+    whitelist: ['loteria', 'user'],
 };
 
 const reducer = combineReducers(reducers);

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import HomeScreen from './app/screens/Home/HomeScreen';
 import store from "./app/store";
+import { JoinScreen } from './app/screens';
 
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <HomeScreen />
+        <JoinScreen />
       </Provider>
     );
   }
