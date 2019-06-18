@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 export const createContainer = (props, actions, screen) => {
     props = !Array.isArray(props) ? [props] : props;
     const mapStateToProps = state => {
-        let states = {}
+        let states = {};
         for (let i = 0; i < props.length; i++) {
-            const prop = props[i]
+            const prop = props[i];
             if (state[prop]) {
-                states[prop] = state[props].toJS();
+                states[prop] = state[prop].toJS();
             }
         }
         return states;
