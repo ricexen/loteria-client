@@ -4,7 +4,7 @@ import immutableTransform from 'redux-persist-transform-immutable';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export { createContainer } from './create-container';
 

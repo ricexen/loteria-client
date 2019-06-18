@@ -6,7 +6,7 @@ const INIT_STATE = {
     errorMessage: '',
     joined: false,
     nickname: '',
-    code: ''
+    token: ''
 };
 
 export const userReducer = (state = fromJS(INIT_STATE), action) => {
@@ -24,11 +24,11 @@ export const userReducer = (state = fromJS(INIT_STATE), action) => {
                 loading: false,
                 joined: true,
                 nickname: action.payload.nickname,
-                code: action.payload.code
+                token: action.payload.token
             });
         default:
             return state;
     }
 }
 
-export default loteriaReducer;
+export default userReducer;

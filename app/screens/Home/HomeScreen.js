@@ -1,19 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { createContainer } from '../../store';
 
 class HomeScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Holasajdhajshdjkasdasjdhajksd</Text>
-                <Text>Holasajdhajshdjkasdasjdhajksd</Text>
-                <Text>Holasajdhajshdjkasdasjdhajksd</Text>
-                <Text>Holasajdhajshdjkasdasjdhajksd</Text>
-                <Text>Holasajdhajshdjkasdasjdhajksd</Text>
-                <Text>Holasajdhajshdjkasdasjdhajksd</Text>
-                <Text>Holasajdhajshdjkasdasjdhajksd</Text>
-                <Text>Holasajdhajshdjkasdasjdhajksd</Text>
                 <Text>Holasajdhajshdjkasdasjdhajksd</Text>
                 <Text>Holasajdhajshdjkasdasjdhajksd</Text>
             </View>

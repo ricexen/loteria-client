@@ -44,4 +44,4 @@ export const loteriaGameReducer = (state = fromJS(INIT_STATE), action) => {
     return state;
 }
 
-export default loteriaReducer;
+export default loteriaGameReducer;
