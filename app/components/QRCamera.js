@@ -21,16 +21,20 @@ export class QRCamera extends React.Component {
     }
 
     saveCameraReference = ref => this.camera = ref;
+
     qrCodeRecognized = ({ barcodes }) => barcodes.forEach(barcode => {
         this.setState({ data: barcode.data });
         this.props.onRead(this.state.data);
     });
+
     shouldComponentUpdate(nextProps, nextState) {
         return this.state.data !== nextState.data;
     }
+
     componentDidUpdate() {
         this.props.onReadNew(this.state.data);
     }
+
     render() {
         const { style: { container: styleContainer, camera: styleCamera } } = this.props;
         return (
