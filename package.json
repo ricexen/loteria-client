@@ -5,7 +5,10 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "dev": "react-native run-android"
+    "dev": "react-native start",
+    "dev:strc": "react-native start --reset-cache",
+    "dev:rand": "react-native run-android",
+    "dev:rios": "react-native run-ios"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.5.0",
