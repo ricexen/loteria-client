@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-export const createContainer = (props, actions, screen) => {
+export const createContainer = (props, actions, component) => {
     props = !Array.isArray(props) ? [props] : props;
     const mapStateToProps = state => {
         let states = {};
@@ -16,7 +16,7 @@ export const createContainer = (props, actions, screen) => {
     function mapDispatchToProps(dispatch) {
         return bindActionCreators(actions, dispatch);
     }
-    return connect(mapStateToProps, mapDispatchToProps)(screen);
+    return connect(mapStateToProps, mapDispatchToProps)(component);
 }
 
 export default createContainer;

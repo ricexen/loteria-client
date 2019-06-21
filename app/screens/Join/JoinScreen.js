@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { createContainer } from '../../store';
 import QRCamera from '../../components/QRCamera';
 import PlayerForm from './PlayerForm';
+import actions from './JoinScreenActions';
+import appStyles from '../styles';
 
 export class JoinScreen extends React.Component {
 
@@ -13,25 +15,38 @@ export class JoinScreen extends React.Component {
         };
     }
 
+    createPlayer = (value) => {
+        const { nickname } = value;
+        this.props.createPlayer(nickname);
+    }
+
+    componentDidUpdate() {
+        const { user, navigation } = this.props;
+        if (!user.joined && !user.loading) {
+            this.props.joinToGame(this.state.joinCode);
+        } else {
+            navigation.navigate('Setup');
+        }
+    }
+
     render = () => {
-        console.log(this.props);
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, appStyles.container, appStyles.centered]}>
                 {!this.state.joinCode ?
-                    <QRCamera onReadNew={(joinCode) => this.setState({ joinCode })} />
-                    : <PlayerForm />}
+                    <QRCamera onReadNew={joinCode => this.setState({ joinCode })} />
+                    : <PlayerForm onSubmit={this.createPlayer} />}
             </View>
         )
     }
 }
 
-export default createContainer(['loteria', 'user'], {}, JoinScreen);
+export const JoinScreenContainer = createContainer(['loteria', 'user'], actions, JoinScreen);
+
+export default JoinScreenContainer;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
         paddingHorizontal: 25,
-        alignItems: 'center',
     },
 });

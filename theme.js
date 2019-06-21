@@ -8,5 +8,7 @@ export default {
         primary: '#15e899',
         accent: '#ec2a72',
         text: 'white',
+        disabled: 'white',
+        placeholder: 'white',
     }
 }

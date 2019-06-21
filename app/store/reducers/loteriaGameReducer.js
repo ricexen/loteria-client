@@ -5,6 +5,7 @@ const INIT_STATE = {
     error: false,
     errorMessage: '',
     sheets: [],
+
     sheet: [[], [], [], []],
     game: [[], [], [], []],
     lastPlay: [null, null],
@@ -12,19 +13,19 @@ const INIT_STATE = {
 
 export const loteriaGameReducer = (state = fromJS(INIT_STATE), action) => {
     switch (action.type) {
-        case 'REQUEST_SHEETS':
-        case 'REQUEST_CHOOSE_SHEET':
-        case 'REQUEST_FILL_SPACE':
+        case 'SHEETS_REQUEST':
+        case 'CHOOSE_SHEET_REQUEST':
+        case 'FILL_SPACE_REQUEST':
             return state.merge({ loading: true });
-        case 'REQUEST_SHEETS_FAILURE':
-        case 'CHOOSE_SHEET_FAILURE':
+        case 'SHEETS_REQUEST_FAILURE':
+        case 'CHOOSE_SHEET_REQUEST_FAILURE':
         case 'FILL_SPACE_FAILURE':
             return state.merge({
                 loading: false,
                 error: true,
                 errorMessage: action.payload.errorMessage
             });
-        case 'REQUEST_SHEETS_SUCCESS':
+        case 'SHEETS_REQUEST_SUCCESS':
             return state.merge({
                 loading: false,
                 sheets: action.payload.sheets,
