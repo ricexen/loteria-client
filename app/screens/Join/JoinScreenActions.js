@@ -1,30 +1,6 @@
 import { url, toQuery } from '../../util/url';
 import { headers as connectionHeaders } from '../../config/connection';
 
-export function joinToGame(code) {
-    return (dispatch, getState) => {
-        const { user } = getState();
-        const playerToken = user.get('token');
-        const URL = url(`/game/${code}/join`);
-        fetch(URL, {
-            method: 'POST',
-            headers: { Authorization: `Bearer ${playerToken}`, }
-        })
-            .then(response => response.json())
-            .then(result => {
-                if (result.success) {
-                    dispatch({
-                        type: 'JOIN_REQUEST_SUCCESS',
-                        payload: { token: result.token, }
-                    });
-                }
-            })
-            .catch(error => dispatch({
-                type: 'JOIN_REQUEST_FAILURE',
-                payload: { errorMessage: error.message }
-            }));
-    }
-}
 
 export function createPlayer(nickname) {
     return (dispatch) => {
@@ -55,6 +31,32 @@ export function createPlayer(nickname) {
                 payload: { errorMessage: 'LOL!', error },
             }));
 
+    }
+}
+
+export function joinToGame(code) {
+    return (dispatch, getState) => {
+        const { user } = getState();
+        const { player: playerToken } = user.get('tokens');
+        const URL = url(`/game/${code}/join`);
+        dispatch({ type: 'JOIN_REQUEST' });
+        fetch(URL, {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${playerToken}`, }
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    dispatch({
+                        type: 'JOIN_REQUEST_SUCCESS',
+                        payload: { token: result.token, }
+                    });
+                }
+            })
+            .catch(error => dispatch({
+                type: 'JOIN_REQUEST_FAILURE',
+                payload: { errorMessage: error.message }
+            }));
     }
 }
 

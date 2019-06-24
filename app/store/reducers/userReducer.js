@@ -8,7 +8,10 @@ const INIT_STATE = {
     errorMessage: '',
     joined: false,
     nickname: '',
-    token: ''
+    tokens: {
+        player: '',
+        game: '',
+    }
 };
 
 export const userReducer = (state = fromJS(INIT_STATE), action) => {
@@ -30,7 +33,7 @@ export const userReducer = (state = fromJS(INIT_STATE), action) => {
         case 'CREATE_PLAYER_REQUEST_SUCCESS':
             return state.merge({
                 locading: false,
-                token: action.payload.token,
+                tokens: { player: action.payload.token },
                 nickname: action.payload.nickname,
             });
         case 'JOIN_REQUEST_SUCCESS':
@@ -38,7 +41,7 @@ export const userReducer = (state = fromJS(INIT_STATE), action) => {
                 loading: false,
                 joined: true,
                 nickname: action.payload.nickname,
-                token: action.payload.token
+                tokens: { game: action.payload.token }
             });
         default:
             return state;
