@@ -12,7 +12,7 @@ export class JoinScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            joinCode: 'mxlUvSss4'
+            joinCode: ''
         };
     }
 

@@ -20,7 +20,7 @@ export class SetupScreen extends React.Component {
                 appStyles.container,
                 appStyles.centered
             ]}>
-                <Text>You joined! congrats! xD</Text>
+                <Text>Welcome {this.props.user.nickname}!</Text>
             </View>
         )
     }

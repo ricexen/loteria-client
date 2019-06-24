@@ -40,7 +40,6 @@ export const userReducer = (state = fromJS(INIT_STATE), action) => {
             return state.merge({
                 loading: false,
                 joined: true,
-                nickname: action.payload.nickname,
                 tokens: { game: action.payload.token }
             });
         default:
