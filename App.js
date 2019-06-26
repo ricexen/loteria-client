@@ -9,7 +9,7 @@ import theme from './theme';
 export class App extends Component {
 
   componentDidMount() {
-    persistStore(store);
+    // persistStore(store);
   }
 
   render() {

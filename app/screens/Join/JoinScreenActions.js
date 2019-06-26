@@ -1,5 +1,5 @@
 import { url, toQuery } from '../../util/url';
-import { headers as connectionHeaders } from '../../config/connection';
+import { headers as connectionHeaders, socket } from '../../config/connection';
 
 
 export function createPlayer(nickname) {
@@ -50,6 +50,10 @@ export function joinToGame(code) {
                     dispatch({
                         type: 'JOIN_REQUEST_SUCCESS',
                         payload: { token: result.token, }
+                    });
+                    socket.emit(`joinGame`, {
+                        player: { nickname: user.get('nickname') },
+                        game: { id: code }
                     });
                 }
             })

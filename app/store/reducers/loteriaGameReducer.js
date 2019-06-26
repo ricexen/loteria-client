@@ -5,7 +5,6 @@ const INIT_STATE = {
     error: false,
     errorMessage: '',
     sheets: [],
-
     sheet: [[], [], [], []],
     game: [[], [], [], []],
     lastPlay: [null, null],
